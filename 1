@@ -1,21 +1,3 @@
-import sys
-
-
-def qname():
-    name = input("С кем я говорю?\n-")
-    count = 0
-    for i in players:
-        if name == i[0]:
-            find = True
-            break
-        else:
-            find = False
-        count += 1
-    if not find:
-        print("Данного игрока не существует.")
-    return count
-
-
 diesel = ["1", "diesel", "500", "150", "300", "600"]
 boss = ["2", "boss", "700", "200", "350", "700"]
 wrangler = ["3", "wrangler", "900", "250", "400", "800"]
@@ -66,39 +48,3 @@ businesses = [
     aircompany,
     neftcompany,
 ]
-
-end = False
-
-""" НАЧАЛО """
-number_of_players = int(input("Сколько игроков?\n-"))
-if number_of_players >= 2 and number_of_players <= 4:
-    player1 = [input("Как зовут первого игрока?\n-")]
-    player2 = [input("Как зовут второго игрока?\n-")]
-    players = [player1, player2]
-    if number_of_players >= 3:
-        player3 = [input("Как зовут третьего игрока?\n-")]
-        players = [player1, player2, player3]
-    if number_of_players == 4:
-        player4 = [input("Как зовут четвёртого игрока?\n-")]
-        players = [player1, player2, player3, player4]
-else:
-    print(
-        "Невозможное количество игроков для данной игры. Игра рассчитана на 2-4 игрока. Попробуйте заново."
-    )
-    end = True
-
-while not end:
-    question = input("Чем могу помочь?\n-").lower()
-
-    """ БАЗОВЫЕ КОМАНДЫ """
-    if question == "помощь" or question == "help":
-        pass
-    if question == "игроки" or question == "players":
-        print(players)
-    if question == "конец" or question == "qq":
-        sys.exit("Спасибо за игру!")
-    """ КОМАНДЫ С БИЗНЕСАМИ """
-    if question == "купить" or question == "buy":
-        player_number = qname()
-        if player_number < len(players):
-            player = players[player_number]
